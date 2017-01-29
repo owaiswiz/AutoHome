@@ -1,0 +1,17 @@
+<div class="root-home">
+	<h1> AutoHome </h1>
+	<h2> A Home Automation Solution Using Raspberry Pi</h2>
+	<div class="divider"></div>
+	<div class="feature">
+		SIMPLE <br> & <br> STRAIGHTFORWARD
+	</div>
+	<% if !session[:user_id] %>
+    <% if User.first != nil %>
+      <a href="/login" class="btn btn-primary btn-black btn-custom-primary home-page-button">Login Now</a>
+    <% else %>
+      <a href="/register" class="btn btn-primary btn-black btn-custom-primary home-page-button">Register Now</a>
+    <% end %>
+  <% else %>
+  		<a href="/main" class="btn btn-primary btn-black btn-custom-primary home-page-button">Home</a>
+  <% end %>
+</div>

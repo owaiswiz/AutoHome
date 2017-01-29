@@ -9,6 +9,15 @@
   </head>
 
   <body>
+    <%= stylesheet_link_tag controller_name, media: 'all' %>
+    <%= javascript_include_tag controller_name %>
+    <%= render "shared/navbar" %>
+    <% flash.each do |key, value| %>
+        <div class="alert alert-<%= key %>">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <%= value %>  
+        </div>
+    <% end %>
     <%= yield %>
   </body>
 </html>

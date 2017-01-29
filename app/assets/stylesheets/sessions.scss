@@ -1,0 +1,38 @@
+// Place all the styles related to the sessions controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.login-form
+{
+	h1
+	{
+		letter-spacing: 10px;
+		font-weight: lighter;
+		font-size: 6em;
+		padding-bottom: 50px;
+	}
+	text-align: center;
+	margin: 60px auto 0px auto;
+  width: 400px;
+  padding: 40px;
+  padding-top:0px !important;
+  padding-bottom: 0px !important;
+  border-radius: 3px;
+
+  .username-login,.password-login
+  {
+  	display:block;
+  	margin: 50px 0px !important;
+  	padding: 25px;
+  	width: 100%;
+  	font-size: 1.3em;
+  	//text-align: center;
+  	letter-spacing: 2px;
+  }
+
+  .submit-login
+  {
+  	width: 100%;
+  	padding: 25px !important;
+  	font-size: 1.3em;
+  }
+}
