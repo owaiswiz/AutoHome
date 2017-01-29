@@ -1,5 +1,16 @@
 Rails.application.routes.draw do
-  get '/' => "home#home"
+	
+	get 'register' => "users#new"
+	post 'register' => "users#create"
 
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+	get 'login' => "sessions#login"
+	post 'login' => "sessions#login_attempt"
+	get 'logout' => "sessions#logout"
+	get 'home' => "sessions#home"
+
+
+	get '/' => "home#home"
+	get '/main' => "home#main"
+
+  	# For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

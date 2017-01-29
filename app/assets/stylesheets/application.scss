@@ -1,2 +1,55 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "font-awesome-sprockets";
+@import "font-awesome";
+.alert{
+	margin-top: -20px;
+	text-align: center;
+	letter-spacing: 2px;
+	border-radius: 0px !important;
+}
+.navbar-brand{
+	font-weight: 400;
+	font-size: 1.3em;
+	letter-spacing: 2px;
+	color: #010101 !important;
+}
+.brand-icon{
+	width: 35px;
+	margin-top: -9px;
+	margin-right: 5px;
+}
+.btn-custom-primary{
+	width: 100px;
+	margin-top: 4px;
+	padding: 10px 20px  !important;
+	background-color: white !important;
+	border-width: 2px;
+	font-size: 1.1em;
+  transition-duration: 0.3s;
+  transition-property: initial;
+	transition-timing-function: ease-in;
+	&:hover{
+		transform: scale(1.05,1.05);
+	}
+}
+
+.btn-black{
+	border-color: #010101 !important;
+	color: #010101 !important;
+	&:hover{
+		color: white !important;
+		background-color: #010101 !important;
+	}
+}
+
+.fa-10
+{
+	font-size: 10em;
+}
+
+input[type=range]
+{
+	padding:25px 0;
+  width: 120px;
+}

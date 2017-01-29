@@ -1,0 +1,18 @@
+<% @page_title = "Register" %>
+<% if @user.errors.any? %>
+  <% for message_error in @user.errors.full_messages %>
+    <div class="alert alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <%= message_error %>  
+    </div>
+  <% end %>
+<% end %>
+<div class="register-form">
+  <h1>REGISTER</h1>
+  <%= form_for(:user, :url => {:controller => 'users', :action => 'create'}) do |f| %>
+    <%= f.text_field :username, placeholder: "Enter Username",class: "username-register" %>
+    <%= f.password_field :password, placeholder: "Enter Password",class: "password-register" %>
+    <%= f.password_field :password_confirmation, placeholder: "Re-Enter Password",class: "password-register"%>
+    <%= f.submit :Signup, class:"btn btn-primary btn-custom-primary btn-black submit-register" %>
+  <% end %>
+</div>
