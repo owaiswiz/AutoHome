@@ -68,6 +68,76 @@
 	{
 		padding: 25px !important;
 		margin:25px !important;
+		
+		.remove-device
+		{
+			float: right;
+
+			.fa-times
+			{
+				color: #f44336;
+			}
+		}
+		.device-controls
+		{
+			position: relative;
+			text-align: center;
+			width: 100%;
+			border-left: 1px solid #ddd;
+			border-right: 1px solid #ddd;
+			border-bottom: 1px solid #ddd;
+			input[type=range]
+			{
+				width: 100%;
+			}
+
+			input + label
+			{
+				font-weight: normal;
+			}
+			.color-selector
+			{
+				
+
+				input[name=color]
+				{
+					visibility: hidden;
+				}
+
+				.choose-color-label{
+					font-size: 1.2em;
+					font-weight: normal;
+				}
+				.color-label
+				{
+					min-width: 1.3em;
+					min-height: 1.3em;
+					border-width: 1px;
+					border-radius: 50%;
+					border-style: solid;
+					border-color:	white;
+					margin: 20px;
+					vertical-align: middle;
+					&.red-label
+					{
+						background-color: red;
+					}
+					&.blue-label
+					{
+						background-color: blue;
+					}
+					&.green-label
+					{
+						background-color: green;
+					}
+					&.active-color
+					{
+						border-color: #010101;
+						border-width: 3px;
+					}
+				}
+			}
+		}
 	}
 	.rooms-label,.devices-label
 	{
@@ -106,15 +176,90 @@
 			color: #020202 !important;
 		}
 	}
+	
+	.right-side,.left-side
+	{
+		min-height: 300px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		>div
+		{
+			width:100%;
+		}
+	}
+	.left-side
+	{
+		padding-left: 0px;
+		border-right: 1px solid #DDD;
+	}
+	.right-side
+	{
+		border-left: 1px solid #DDD;
+	}
 }
 
 
+.btn-schedule-device
+{
+	background-color: white;
+	border-color: #29B6F6;
+	color: #29B6F6;
+	font-weight: normal;
+	transition-duration: 0.4s;
+	&:hover,&:active{
+		border-color: white;
+		background-color: #29B6F6;
+		color:white;
+	}
+}
+
+.light-enabled
+{
+	color:	#FFD600;
+}
+.light-disabled
+{
+	color: #333 !important;
+}
+.device-enabled
+{
+	color: #66BB6A;
+}
+.device-disabled
+{
+	color: #333
+}
+
+.multicolor-false
+{
+	pointer-events: none;
+	opacity: 0.5;
+	cursor: not-allowed;
+}
+
+.default-light,.yellow-light
+{
+	color: #FFD600
+}
+.red-light
+{
+	color: red;
+}
+.green-light
+{
+	color:green;
+}
+.blue-light
+{
+	color: blue;
+}
 
 
-
-
-
-
+i.fan
+{
+	color: #333;
+}
 
 
 

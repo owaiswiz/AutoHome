@@ -1,28 +1,116 @@
 <div class="main-home">
-	<div class="col-xs-4 col-sm-4 col-md-4 side-bar">
+	<div class="col-xs-3 col-sm-3 col-md-3 side-bar">
 		<h1 class="rooms-label">Rooms</h1>
 		<div class="list-group">
-		  <a href="#" class="list-group-item">
-		    Cras justo odio
-		  </a>
-		  <a href="#" class="list-group-item">Dapibus ac facilisis in<span class="badge">12</span></a>
-		  <a href="#" class="list-group-item active">Morbi leo risus<span class="badge">177</span></a>
-		  <a href="#" class="list-group-item">Porta ac consectetur ac</a>
-		  <a href="#" class="list-group-item">Vestibulum at eros</a>
+		  <a href="#" class="list-group-item">Room 1<span class="badge">12</span></a>
+		  <a href="#" class="list-group-item active">Room 2<span class="badge">1</span></a>
+		  <a href="#" class="list-group-item">Hallway</a>
+		  <a href="#" class="list-group-item">Guest Room</a>
 		</div>
 	</div>
-	<div class="col-xs-8 col-sm-8 col-md-8 devices">
+	<div class="col-xs-9 col-sm-9 col-md-9 devices">
 		<h1 class="devices-label">Connected Devices</h1>
+		<div class="row">
+			<div class="panel panel-default device col-xs-5 col-sm-5 col-md-5">
+				<%
+					id="20"
+					name="Temp Light"
+					icon="fa-lightbulb-o"
+					device_type="light"
+					state="disabled"
+					brightness=20
+					color="yellow"
+					multicolor="true"
+				%>
+			  <div class="panel-heading">
+			    <h3 class="panel-title device-name">
+				    <%= name %>
+				    <a href="#" class="remove-device">
+				    	<i class="fa fa-times"></i>
+				  	</a>
+			  	</h3>
+			  </div>
 
-		<div class="panel panel-default device">
-		  <div class="panel-heading">
-		    <h3 class="panel-title device-name">Temp Light Bulb</h3>
-		  </div>
-		  <div class="panel-body device-controls">
-			  <i class="fa fa-lightbulb-o fa-10" aria-hidden="true"></i>
-			  <input id="rangeInput" type="range" orient="vertical" />
-			  <label id="rangeText" />
-		  </div>
+			  <div class="panel-body device-controls">
+
+			  	<div class="left-side col-xs-6 col-sm-6 col-md-6">
+				  	<div>
+						  <i class="fa <%= icon %> fa-10 <%=device_type%> <%=device_type%>-<%= state %> <%= color%>-<%= device_type %>" aria-hidden="true" style="opacity: <%=brightness/100.0 + 0.3%>"></i>
+						  <input class="brightnessInput" type="range" value="<%= brightness %>" <%= state %>/>
+						  <label class="brightnessText brightnessText">Brightness: <%= brightness %>%</label>
+					  </div>
+				  </div>
+
+				  <div class="right-side col-xs-6 col-sm-6 col-md-6">
+				  	<div>
+					  	<div class="color-selector multicolor-<%= multicolor %>">
+								<div class="choose-color-label">Choose Your Color</div>
+						  	<div class="radiowrapper" id="wrap1">
+								  <input type="radio" name="color" value="red" id="red">
+								  <label for="red" class="color-label red-label"></label>
+								</div>
+								<div class="radiowrapper" id="wrap2">
+								  <input type="radio" name="color" value="green" id="green">
+								  <label for="green" class="color-label green-label"></label>
+								</div>
+								<div class="radiowrapper" id="wrap3">
+								  <input type="radio" name="color" value="blue" id="blue">
+								  <label for="blue" class="color-label blue-label"></label>
+								</div>
+							</div>
+							<a href="#" class="btn btn-primary btn-schedule-device">
+								Schedule
+								<i class="fa fa-clock-o fa-1" aria-hidden="true"></i>
+							</a>
+						</div>
+				  </div>
+			  </div>
+			</div>
+
+<!-- FAN TEMPLATE -->
+
+			<div class="panel panel-default device col-xs-5 col-sm-5 col-md-5">
+				<%
+					id="21"
+					name="Temp Fan"
+					icon="fa-arrows"
+					device_type="fan"
+					state="enabled"
+					speed=3
+					if state=="enabled"
+						spin="fa-spin fa-2x"
+					else
+						spin=""
+					end
+				%>
+			  <div class="panel-heading">
+			    <h3 class="panel-title device-name">
+				    <%= name %>
+				    <a href="#" class="remove-device">
+				    	<i class="fa fa-times"></i>
+				  	</a>
+			  	</h3>
+			  </div>
+
+			  <div class="panel-body device-controls">
+
+			  	<div class="left-side col-xs-6 col-sm-6 col-md-6">
+			  		<div>
+						  <i class="fa <%= icon %> fa-10 <%= device_type %> <%= device_type %>-<%= state %> <%= color%>-<%= device_type %> <%= spin %>" aria-hidden="true" style="animation-duration: <%= 4.0*(0.5)**(speed - 1) %>s"></i>
+						  <input class="speedInput" min="1" max="4" type="range" value="<%= speed %>" <%= state %>/>
+						  <label class="speedText">Speed: <%= speed %></label>
+						</div>
+				  </div>
+
+				  <div class="right-side col-xs-6 col-sm-6 col-md-6">
+						<a href="#" class="btn btn-primary btn-schedule-device">
+							Schedule
+							<i class="fa fa-clock-o fa-1" aria-hidden="true"></i>
+						</a>
+				  </div>
+			  </div>
+			</div>
+
 		</div>
 	</div>
 </div>
