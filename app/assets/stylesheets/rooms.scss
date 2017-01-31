@@ -1,0 +1,30 @@
+.add-room
+{	
+	margin: auto;
+	text-align: center;
+	width: 500px;
+	h1
+	{
+		font-weight: lighter;
+		font-size: 5em;
+		letter-spacing: 3px;
+		margin: 100px 0;
+	}
+
+	input
+	{
+		width: 100%;
+		font-size: 1.3em;
+		letter-spacing: 3px;
+		padding: 25px;
+		margin: 25px 0;
+	}
+
+	.add-room-button
+	{
+	
+		margin: 50px 0 !important;
+		padding: 25px !important;
+		display: block;
+	}
+}

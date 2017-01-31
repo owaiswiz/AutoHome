@@ -69,6 +69,17 @@
 		padding: 25px !important;
 		margin:25px !important;
 		
+		.panel-heading
+		{
+			padding: 15px 0;
+
+			.panel-title
+			{
+				font-weight: normal;
+				font-size: 1.5em;
+				letter-spacing: 3px;
+			}
+		}
 		.remove-device
 		{
 			float: right;
@@ -221,12 +232,13 @@
 .light-disabled
 {
 	color: #333 !important;
+	opacity: 1 !important;
 }
-.device-enabled
+.fan-enabled,.generic-enabled
 {
-	color: #66BB6A;
+	color: #66BB6A !important;
 }
-.device-disabled
+.generic-disabled
 {
 	color: #333
 }
@@ -240,7 +252,7 @@
 
 .default-light,.yellow-light
 {
-	color: #FFD600
+	color: #FFD600;
 }
 .red-light
 {

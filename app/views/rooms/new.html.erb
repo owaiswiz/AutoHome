@@ -1,0 +1,9 @@
+<div class="container">
+<div class="add-room">
+	<h1>ADD A ROOM</h1>
+	<%= form_for(:room, url: {controller:'rooms',action: 'create'}) do |f| %>
+		<%= f.text_field :name, placeholder: "Enter Name", class:"name-add-room" %>
+		<%= f.submit "Add Room", class: "btn btn-primary btn-custom-primary btn-black add-room-button" %>
+	<% end %>
+</div>
+</div>

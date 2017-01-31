@@ -1,0 +1,78 @@
+<div class="container">
+<div class="add-device">
+	<h1>ADD A DEVICE</h1>
+	<%= form_for(:device, url: {controller:'devices',action: 'create'}) do |f| %>
+
+		<%= f.text_field :name, placeholder: "Enter Device Name", class:"name-add-device" %>
+	
+		<div class="dropdown pin-selector">
+  		<button class="btn btn-default dropdown-toggle" type="button" id="pin-selector-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+    	Choose the Pin Device is Connected To
+     	<span class="caret"></span>
+  		</button>
+  		<ul class="dropdown-menu" aria-labelledby="pin-selector-dropdown">
+	    	<% @availablePins.each do |pin| %>
+	    		<li><a href="#"><%= pin %></a></li>
+	    	<% end %>
+  		</ul>
+		</div>
+
+		<div class="dropdown room-selector">
+  		<button class="btn btn-default dropdown-toggle" type="button" id="room-selector-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+    	Choose the Room Device is in
+    	<span class="caret"></span>
+  		</button>
+  		<ul class="dropdown-menu" aria-labelledby="room-selector-dropdown">
+	    	<% @availableRooms.each do |room| %>
+	    		<li><a href="#"><%= room.name %></a></li>
+	    	<% end %>
+  		</ul>
+		</div>
+
+		<div class="dropdown type-selector">
+  		<button class="btn btn-default dropdown-toggle" type="button" id="type-selector-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+    	Choose the Type of Device
+    	<span class="caret"></span>
+  		</button>
+  		<ul class="dropdown-menu" aria-labelledby="type-selector-dropdown">
+	    	<li><a href="#">Light Bulb / LED Light</a></li>
+	    	<li><a href="#">FAN</a></li>
+	    	<li><a href="#">Others</a></li>
+  		</ul>
+		</div>
+
+		<div class="dropdown icon-selector">
+  		<button class="btn btn-default dropdown-toggle" type="button" id="icon-selector-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+    	Choose the Icon of Device
+    	<span class="caret"></span>
+  		</button>
+  		<ul class="dropdown-menu" aria-labelledby="icon-selector-dropdown">
+	    	<li><a href="#"><i class="fa fa-lightbulb-o fa-3"></i></a></li>
+	    	<li><a href="#"><i class="fa fa-arrows fa-3"></i></a></li>
+	    	<li><a href="#"><i class="fa fa-bolt fa-3"></i></a></li>
+  		</ul>
+		</div>
+
+		<div class="dropdown light-color-selector">
+  		<button class="btn btn-default dropdown-toggle" type="button" id="light-color-selector-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+    	Choose the Color of Light Bulb / LED
+    	<span class="caret"></span>
+  		</button>
+  		<ul class="dropdown-menu" aria-labelledby="light-color-selector-dropdown">
+	    	<li><a class="color color-yellow" href="#">YELLOW</a></li>
+	    	<li><a class="color color-red" href="#">RED</a></li>
+	    	<li><a class="color color-green" href="#">GREEN</a></li>
+	    	<li><a class="color color-blue" href="#">BLUE</a></li>
+  		</ul>
+		</div>
+
+		<label class="multicolor-label">Is the Light Multicolored ? </label>
+		<input type="checkbox" name="multicolor"></input>
+
+		<%= f.submit "Add Device", class: "btn btn-primary btn-custom-primary btn-black add-device-button" %>
+		</div>
+	<% end %>
+</div>
+</div>
+
+<div style="margin-top: 200px"></div>

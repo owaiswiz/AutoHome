@@ -11,6 +11,12 @@ Rails.application.routes.draw do
 
 	get '/' => "home#home"
 	get '/main' => "home#main"
+	get '/main/:currentRoomId' => "home#main"
 
+	get '/room/add' => "rooms#new"
+	post '/room/add' => "rooms#create"
+
+	get '/device/add' => "devices#new"
+	post '/device/add' => "devices#create"
   	# For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

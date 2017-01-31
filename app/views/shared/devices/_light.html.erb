@@ -1,0 +1,56 @@
+<!-- Light TEMPLATE -->
+<div class="panel panel-default device col-xs-5 col-sm-5 col-md-5">
+	<%
+		id="20"
+		name="Temp Light"
+		icon="fa-lightbulb-o"
+		device_type="light"
+		state="disabled"
+		brightness=20
+		color="yellow"
+		multicolor="true"
+	%>
+  <div class="panel-heading">
+    <h3 class="panel-title device-name">
+	    <%= name %>
+	    <a href="#" class="remove-device">
+	    	<i class="fa fa-times"></i>
+	  	</a>
+  	</h3>
+  </div>
+
+  <div class="panel-body device-controls">
+
+  	<div class="left-side col-xs-6 col-sm-6 col-md-6">
+	  	<div>
+			  <i class="fa <%= icon %> fa-10 <%=device_type%> <%=device_type%>-<%= state %> <%= color%>-<%= device_type %>" aria-hidden="true" style="opacity: <%=brightness/100.0 + 0.3%>"></i>
+			  <input class="brightnessInput" type="range" value="<%= brightness %>" <%= state %>/>
+			  <label class="brightnessText brightnessText">Brightness: <%= brightness %>%</label>
+		  </div>
+	  </div>
+
+	  <div class="right-side col-xs-6 col-sm-6 col-md-6">
+	  	<div>
+		  	<div class="color-selector multicolor-<%= multicolor %>">
+					<div class="choose-color-label">Choose Your Color</div>
+			  	<div class="radiowrapper" id="wrap1">
+					  <input type="radio" name="color" value="red" id="red">
+					  <label for="red" class="color-label red-label"></label>
+					</div>
+					<div class="radiowrapper" id="wrap2">
+					  <input type="radio" name="color" value="green" id="green">
+					  <label for="green" class="color-label green-label"></label>
+					</div>
+					<div class="radiowrapper" id="wrap3">
+					  <input type="radio" name="color" value="blue" id="blue">
+					  <label for="blue" class="color-label blue-label"></label>
+					</div>
+				</div>
+				<a href="#" class="btn btn-primary btn-schedule-device">
+					Schedule
+					<i class="fa fa-clock-o fa-1" aria-hidden="true"></i>
+				</a>
+			</div>
+	  </div>
+  </div>
+</div>

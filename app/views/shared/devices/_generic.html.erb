@@ -1,0 +1,35 @@
+<!-- Generic TEMPLATE -->
+
+<div class="panel panel-default device col-xs-5 col-sm-5 col-md-5">
+	<%
+		id="21"
+		name="Refrigerator"
+		icon="fa-bolt"
+		device_type="generic"
+		state="enabled"
+	%>
+  <div class="panel-heading">
+    <h3 class="panel-title device-name">
+	    <%= name %>
+	    <a href="#" class="remove-device">
+	    	<i class="fa fa-times"></i>
+	  	</a>
+  	</h3>
+  </div>
+
+  <div class="panel-body device-controls">
+
+  	<div class="left-side col-xs-6 col-sm-6 col-md-6">
+  		<div>
+			  <i class="fa <%= icon %> fa-10 <%= device_type %> <%= device_type %>-<%= state %> " aria-hidden="true" ></i>
+			</div>
+	  </div>
+
+	  <div class="right-side col-xs-6 col-sm-6 col-md-6">
+			<a href="#" class="btn btn-primary btn-schedule-device">
+				Schedule
+				<i class="fa fa-clock-o fa-1" aria-hidden="true"></i>
+			</a>
+	  </div>
+  </div>
+</div>

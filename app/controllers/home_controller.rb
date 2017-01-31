@@ -7,6 +7,11 @@ class HomeController < ApplicationController
   end
 
   def main
-
+  	@rooms = Room.all
+  	begin
+  		@currentRoom = Room.find(params[:currentRoomId])
+  	rescue Exception => e
+  		@currentRoom = Room.first
+  	end
   end
 end

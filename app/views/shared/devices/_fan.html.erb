@@ -1,0 +1,43 @@
+<!-- FAN TEMPLATE -->
+
+<div class="panel panel-default device col-xs-5 col-sm-5 col-md-5">
+	<%
+		id="21"
+		name="Temp Fan"
+		icon="fa-arrows"
+		device_type="fan"
+		state="enabled"
+		speed=3
+		if state=="enabled"
+			spin="fa-spin"
+		else
+			spin=""
+		end
+	%>
+  <div class="panel-heading">
+    <h3 class="panel-title device-name">
+	    <%= name %>
+	    <a href="#" class="remove-device">
+	    	<i class="fa fa-times"></i>
+	  	</a>
+  	</h3>
+  </div>
+
+  <div class="panel-body device-controls">
+
+  	<div class="left-side col-xs-6 col-sm-6 col-md-6">
+  		<div>
+			  <i class="fa <%= icon %> fa-10 <%= device_type %> <%= device_type %>-<%= state %> <%= spin %>" aria-hidden="true" style="animation-duration: <%= 4.0*(0.5)**(speed - 1) %>s"></i>
+			  <input class="speedInput" min="1" max="4" type="range" value="<%= speed %>" <%= state %>/>
+			  <label class="speedText">Speed: <%= speed %></label>
+			</div>
+	  </div>
+
+	  <div class="right-side col-xs-6 col-sm-6 col-md-6">
+			<a href="#" class="btn btn-primary btn-schedule-device">
+				Schedule
+				<i class="fa fa-clock-o fa-1" aria-hidden="true"></i>
+			</a>
+	  </div>
+  </div>
+</div>
