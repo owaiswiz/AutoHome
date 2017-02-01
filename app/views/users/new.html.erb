@@ -9,7 +9,7 @@
 <% end %>
 <div class="register-form">
   <h1>REGISTER</h1>
-  <%= form_for(:user, url: {controller: 'users', actions: 'create'}) do |f| %>
+  <%= form_for(:user, url: {controller: 'users', action: 'create'}) do |f| %>
     <%= f.text_field :username, placeholder: "Enter Username",class: "username-register" %>
     <%= f.password_field :password, placeholder: "Enter Password",class: "password-register" %>
     <%= f.password_field :password_confirmation, placeholder: "Re-Enter Password",class: "password-register"%>

@@ -3,7 +3,6 @@ class CreateDevices < ActiveRecord::Migration[5.0]
     create_table :devices do |t|
       t.string :name
       t.integer :pin
-      t.string :room
       t.string :icon
       t.string :state
       t.string :type

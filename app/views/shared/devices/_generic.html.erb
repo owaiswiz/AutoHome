@@ -1,16 +1,9 @@
 <!-- Generic TEMPLATE -->
 
-<div class="panel panel-default device col-xs-5 col-sm-5 col-md-5">
-	<%
-		id="21"
-		name="Refrigerator"
-		icon="fa-bolt"
-		device_type="generic"
-		state="enabled"
-	%>
+<div class="panel panel-default device col-xs-5 col-sm-5 col-md-5" id="<%= device.id %>">
   <div class="panel-heading">
     <h3 class="panel-title device-name">
-	    <%= name %>
+	    <%= device.name %>
 	    <a href="#" class="remove-device">
 	    	<i class="fa fa-times"></i>
 	  	</a>
@@ -21,7 +14,7 @@
 
   	<div class="left-side col-xs-6 col-sm-6 col-md-6">
   		<div>
-			  <i class="fa <%= icon %> fa-10 <%= device_type %> <%= device_type %>-<%= state %> " aria-hidden="true" ></i>
+			  <i class="fa <%= device.icon %> fa-10 <%= device.device_type %> <%= device.device_type %>-<%= device.state %> " aria-hidden="true" ></i>
 			</div>
 	  </div>
 

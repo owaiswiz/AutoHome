@@ -11,7 +11,17 @@ $(document).ready(function(){
 		$(ele).css("opacity",$(ele).siblings(".brightnessInput").val()/100.0 + 0.3)
 	}
 
+	function changeState(ele,state)
+	{
+		var deviceId = $(ele).parents(".device").attr('id');
+		var change = "";
+		if($(ele).hasClass(state))
+			change="enable"
+		else
+			change="disable"
+  	$.ajax("/device/" + deviceId + "/state/" + change);
 
+	}
 
 	//BrightnessHandler
   $('.brightnessInput').on('input change', function () {
@@ -43,6 +53,7 @@ $(document).ready(function(){
 		changeOpacity(this);
 		$(this).toggleClass("light-enabled light-disabled");
 		$(this).siblings(".brightnessInput").prop('disabled', function(i, v) { return !v; });
+		changeState(this,"light-enabled")
 	});
 
 	$(".device .color-label").click(function(){
@@ -52,10 +63,35 @@ $(document).ready(function(){
 	});
 
 	$(".device i.fan").click(function(){
+		$(this).siblings(".speedInput").prop('disabled', function(i, v) { return !v; });
 		$(this).toggleClass("fan-enabled fan-disabled fa-spin")
+		changeState(this,"fan-enabled")
 	});
 
 	$(".device i.generic").click(function(){
 		$(this).toggleClass("generic-enabled generic-disabled");
+		changeState(this,"generic-enabled")
 	});
+
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,18 +1,8 @@
 <!-- Light TEMPLATE -->
-<div class="panel panel-default device col-xs-5 col-sm-5 col-md-5">
-	<%
-		id="20"
-		name="Temp Light"
-		icon="fa-lightbulb-o"
-		device_type="light"
-		state="disabled"
-		brightness=20
-		color="yellow"
-		multicolor="true"
-	%>
+<div class="panel panel-default device col-xs-5 col-sm-5 col-md-5" id="<%= device.id %>">
   <div class="panel-heading">
     <h3 class="panel-title device-name">
-	    <%= name %>
+	    <%= device.name %>
 	    <a href="#" class="remove-device">
 	    	<i class="fa fa-times"></i>
 	  	</a>
@@ -23,15 +13,15 @@
 
   	<div class="left-side col-xs-6 col-sm-6 col-md-6">
 	  	<div>
-			  <i class="fa <%= icon %> fa-10 <%=device_type%> <%=device_type%>-<%= state %> <%= color%>-<%= device_type %>" aria-hidden="true" style="opacity: <%=brightness/100.0 + 0.3%>"></i>
-			  <input class="brightnessInput" type="range" value="<%= brightness %>" <%= state %>/>
-			  <label class="brightnessText brightnessText">Brightness: <%= brightness %>%</label>
+			  <i class="fa <%= device.icon %> fa-10 <%=device.device_type%> <%=device.device_type%>-<%= device.state %> <%= device.color%>-<%= device.device_type %>" aria-hidden="true" style="opacity: <%=device.brightness/100.0 + 0.3%>"></i>
+			  <input class="brightnessInput" type="range" value="<%= device.brightness %>" <%= device.state %>/>
+			  <label class="brightnessText brightnessText">Brightness: <%= device.brightness %>%</label>
 		  </div>
 	  </div>
 
 	  <div class="right-side col-xs-6 col-sm-6 col-md-6">
 	  	<div>
-		  	<div class="color-selector multicolor-<%= multicolor %>">
+		  	<div class="color-selector multicolor-<%= device.multicolor %>">
 					<div class="choose-color-label">Choose Your Color</div>
 			  	<div class="radiowrapper" id="wrap1">
 					  <input type="radio" name="color" value="red" id="red">

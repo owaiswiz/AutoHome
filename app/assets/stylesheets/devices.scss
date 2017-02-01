@@ -28,7 +28,7 @@
 		display: block;
 	}
 
-	.pin-selector,.room-selector,.type-selector,.icon-selector,.light-color-selector
+	.pin-selector,.multi-pin-selector,.room-selector,.type-selector,.icon-selector,.light-color-selector
 	{
 		transition-duration: 0.4s;
 		.dropdown-toggle
@@ -43,8 +43,11 @@
 			border-radius: 0%;
 			&:hover,&:active,&:focus
 			{
-				background-color: #010101 !important;
-				color: white
+				transform: scale(1.05,1.05);
+				background-color: #010101;
+				color: white;
+				transition-duration: 0.4s !important;
+				outline: none !important;
 			}
 		}
 
@@ -71,31 +74,14 @@
 				transition-duration: 0.4s;
 				&:hover,&:active,&:focus
 				{
-					background-color: #010101 !important;
+					background-color: #010101;
 					color: white;
-				}
-				
-				&.color-yellow
-				{
-					color:#FFC107;
-				}
-				&.color-red
-				{
-					color: #f44336;
-				}
-				&.color-green
-				{
-					color: #4CAF50;
-				}
-				&.color-blue
-				{
-					color: #2196F3;
 				}
 			}
 		}
 	}
 
-	i
+	.dropdown-menu i
 	{
 		font-size: 2em;
 		padding-right: 5px;
@@ -112,7 +98,7 @@
 		font-size: 2em;
 		letter-spacing: 3px;
 	}
-	input[name="multicolor"]
+	input[name="device[multicolor]"]
 	{
 		height: 25px;
 		width: 25px;
@@ -137,4 +123,80 @@
 			outline:none;
 		}
 	}
+
+	label
+	{
+		font-weight: normal;
+
+		&.yellow
+		{
+			color:#FFC107;
+		}
+		&.red
+		{
+			color: #f44336;
+		}
+		&.green
+		{
+			color: #4CAF50;
+		}
+		&.blue
+		{
+			color: #2196F3;
+		}
+	}
+
+	.completed,.completed + ul.dropdown-menu li a
+	{
+		border-color: #4CAF50 !important;
+		color: #4CAF50 !important;
+
+		+.dropdown-menu
+		{
+			border-color: #4CAF50 !important;
+		}
+		&:hover,&:active,&:focus
+		{
+			color: white !important;
+			background-color: #4CAF50 !important;
+		}
+	}
+
+	.row.pins-selector,.multicolor-selector
+	{
+		margin: 25px 0;
+		border: 1px solid #DDD;
+	}
+	.error
+	{
+		border: none !important; 
+		outline-offset: -2px;
+		outline: 5px auto #ef5350;
+	}
+
+	.multi-pin-error
+	{
+		color: #ef5350;
+		padding:25px;
+		font-size: 1.2em;
+	}
+
+	#red-pin-selector-dropdown
+	{
+		color: #f44336 !important;
+	}
+	#green-pin-selector-dropdown
+	{
+		color: #4CAF50 !important;
+		&.completed:hover,&.completed:active,&.completed:focus
+		{
+			color: white !important;
+		}
+	}
+	#blue-pin-selector-dropdown
+	{
+		color: #2196F3 !important;
+	}
 }
+
+
