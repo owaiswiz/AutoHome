@@ -127,19 +127,31 @@
 					border-radius: 50%;
 					border-style: solid;
 					border-color:	white;
-					margin: 20px;
+					margin: 10px;
 					vertical-align: middle;
 					&.red-label
 					{
-						background-color: red;
+						background-color: #f44336;
 					}
 					&.blue-label
 					{
-						background-color: blue;
+						background-color: #1E88E5;
 					}
 					&.green-label
 					{
-						background-color: green;
+						background-color: #388E3C;
+					}
+					&.yellow-label
+					{
+						background-color: #FFD600;
+					}
+					&.cyan-label
+					{
+						background-color: #00BCD4;
+					}
+					&.magenta-label
+					{
+						background-color: #EC407A;
 					}
 					&.active-color
 					{
@@ -218,7 +230,7 @@
 	color: #29B6F6;
 	font-weight: normal;
 	transition-duration: 0.4s;
-	&:hover,&:active{
+	&:hover,&:active,&:focus{
 		border-color: white;
 		background-color: #29B6F6;
 		color:white;
@@ -250,28 +262,73 @@
 	cursor: not-allowed;
 }
 
-.default-light,.yellow-light
+.yellow-light
 {
 	color: #FFD600;
 }
 .red-light
 {
-	color: red;
+	color: #f44336;
 }
 .green-light
 {
-	color:green;
+	color: #388E3C;
 }
 .blue-light
 {
-	color: blue;
+	color: #1E88E5;
 }
-
+.magenta-light
+{
+	color: #EC407A;
+}
+.cyan-light
+{
+	color: #00BCD4;
+}
 
 i.fan
 {
 	color: #333;
 }
+
+
+.schedule-modal
+{
+	.modal-dialog
+	{
+		width: 800px;
+		margin: 50px auto;
+	}
+	label,select
+	{
+		text-align: right;
+		font-weight: normal;
+	}
+	label
+	{
+		font-size: 1.2em;
+	}
+	.modal-body > .row
+	{
+		padding:10px !important;
+
+		select
+		{
+			width: 100%;
+		}
+	}
+
+	.schedule-error
+	{
+		font-size: 1.2em;
+		color: #f44336;
+		letter-spacing: 2px;
+		display:inline-block;
+		margin-right: 50px;
+	}
+}
+
 
 
 

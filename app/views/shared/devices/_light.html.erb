@@ -23,23 +23,112 @@
 	  	<div>
 		  	<div class="color-selector multicolor-<%= device.multicolor %>">
 					<div class="choose-color-label">Choose Your Color</div>
+
 			  	<div class="radiowrapper" id="wrap1">
 					  <input type="radio" name="color" value="red" id="red">
 					  <label for="red" class="color-label red-label"></label>
 					</div>
+
+					<div class="radiowrapper" id="wrap12">
+					  <input type="radio" name="color" value="yellow" id="yellow">
+					  <label for="blue" class="color-label yellow-label"></label>
+					</div>
+
 					<div class="radiowrapper" id="wrap2">
 					  <input type="radio" name="color" value="green" id="green">
 					  <label for="green" class="color-label green-label"></label>
 					</div>
+
+					<div class="radiowrapper" id="wrap23">
+					  <input type="radio" name="color" value="cyan" id="cyan">
+					  <label for="blue" class="color-label cyan-label"></label>
+					</div>
+
 					<div class="radiowrapper" id="wrap3">
 					  <input type="radio" name="color" value="blue" id="blue">
 					  <label for="blue" class="color-label blue-label"></label>
 					</div>
+
+					<div class="radiowrapper" id="wrap13">
+					  <input type="radio" name="color" value="magenta" id="magenta">
+					  <label for="blue" class="color-label magenta-label"></label>
+					</div>
+
 				</div>
-				<a href="#" class="btn btn-primary btn-schedule-device">
+				<button class="btn btn-primary btn-schedule-device" data-toggle="modal" data-target="#schedule-<%=device.id%>-Modal">
 					Schedule
 					<i class="fa fa-clock-o fa-1" aria-hidden="true"></i>
-				</a>
+				</button>
+				<div class="modal schedule-modal fade" data-device-id="<%=device.id%>" id="schedule-<%=device.id%>-Modal" tabindex="-1" role="dialog" aria-labelledby="scheduleModalLabel">
+				  <div class="modal-dialog" role="document">
+				    <div class="modal-content">
+				      <div class="modal-header">
+				        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				        <h4 class="modal-title" id="myModalLabel">Schedule Device - <%= device.name %></h4>
+				      </div>
+				      <div class="modal-body">
+				        <div class="schedule-type row">
+				        	<label class="schedule-type-label col-xs-4 col-md-4 col-sm-4">Do This: </label>
+				        	<div class="selects-wrapper row col-xs-8 col-md-8 col-sm-8">
+					        	<div class="col-xs-6 col-md-6 col-sm-6">
+						        	<select class="schedule-type-select" name="schedule-type">
+								        <option selected disabled value="">Choose Schedule Type</option>
+								        <option value="everyday">Everyday</option>
+								        <option value="day">Particular Day of Month</option>
+								      </select>
+							      </div>
+							      <div class="col-xs-6 col-md-6 col-sm-6">
+								      <select class="schedule-day-select hidden" name="schedule-day">
+								      	<option class="schedule-day-option default-option" selected disabled value="">Choose Day of Month</option>
+								      	<% for i in 1..31 %>
+								      		<option class="schedule-day-option" value="<%=i%>"><%=i%></option>
+								      	<% end %>
+								      </select>
+								     </div>
+						      </div>
+						    </div>
+						    <div class="schedule-time row">
+						    	<label class="schedule-time-label col-xs-4 col-md-4 col-sm-4">At: </label>
+						    	<div class="selects-wrapper row col-xs-8 col-md-8 col-sm-8">
+						    		<div class="col-xs-6 col-md-6 col-sm-6">
+								    	<select class="schedule-hour-select">
+								    		<option selected disabled value="">Hour</option>
+								    		<%  for i in 0..23 %>
+								    			<option class="schedule-hour-option" value="<%=i%>"><%=i.to_s.rjust(2,"0")%></option>
+								    		<% end %>
+								    	</select>
+								    </div>
+							    	<div class="col-xs-6 col-md-6 col-sm-6">
+								    	<select class="schedule-minute-select">
+								    		<option selected disabled value="">Minute</option>
+								    		<%  for i in 0..59 %>
+								    			<option class="schedule-minute-option" value="<%=i%>"><%=i.to_s.rjust(2,"0")%></option>
+								    		<% end %>
+								    	</select>
+								    </div>
+							    </div>
+						    </div>
+						    <div class="schedule-state row">
+						    	<label class="schedule-state-label col-xs-4 col-md-4 col-sm-4">Turn This Device: </label>
+						    	<div class="selects-wrapper row col-xs-8 col-md-8 col-sm-8">
+						    		<div class="col-xs-6 col-md-6 col-sm-6">
+								    	<select class="schedule-state-select">
+								    		<option selected disabled value="">Choose What To Do</option>
+								    		<option class="schedule-state-option" value="enable">On</option>
+								    		<option class="schedule-state-option" value="enable">Off</option>
+								    	</select>
+							    	</div>
+							    </div>
+						    </div>
+				      </div>
+				      <div class="modal-footer">
+				      	<div class="schedule-error hidden">One or More Fields is Empty</div>
+				        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				        <button type="button" class="btn btn-primary btn-schedule-device btn-schedule-submit">Schedule Device</button>
+				      </div>
+				    </div>
+				  </div>
+				</div>
 			</div>
 	  </div>
   </div>

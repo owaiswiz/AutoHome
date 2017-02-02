@@ -5,6 +5,10 @@ $(document).ready(function(){
 	var typeInput = $(".add-device input#device_device_type");
 	var iconInput = $(".add-device input#device_icon");
 	var colorInput = $(".add-device input#device_color");
+	var redInput = $(".add-device input#device_red_pin");
+	var greenInput = $(".add-device input#device_green_pin");
+	var blueInput = $(".add-device input#device_blue_pin");
+
 	function addErrorToDropdown(element){
 		element.siblings("button.dropdown-toggle").addClass("error");
 	}
@@ -28,9 +32,6 @@ $(document).ready(function(){
 			valid=false;
 		}
 
-		if(dropdownInputInvalid(pinInput))
-			valid=false;
-
 		if(dropdownInputInvalid(roomInput))
 			valid=false
 
@@ -51,14 +52,11 @@ $(document).ready(function(){
 				var redPin = pinsSelector.attr('data-red-pin');
 				var greenPin = pinsSelector.attr('data-green-pin');
 				var bluePin = pinsSelector.attr('data-blue-pin');
-				if ( redPin == greenPin || greenPin == bluePin || redPin == bluePin || redPin == "" || greenPin == "" || bluePin == "")
+				if ( redPin == greenPin || greenPin == bluePin || redPin == bluePin || redPin == "" || greenPin == "" || bluePin == "" || dropdownInputInvalid(redInput) || dropdownInputInvalid(greenInput) || dropdownInputInvalid(blueInput))
 				{
 					valid=false;
 					$(".multi-pin-error").removeClass("hidden");
 					pinsSelector.addClass("error");
-				}
-				else
-				{
 				}
 			}
 
@@ -66,6 +64,10 @@ $(document).ready(function(){
 		if(typeInput.val() == "generic")
 			if(dropdownInputInvalid(iconInput))
 				valid=false
+
+		if(!$("input#device_multicolor").is(":checked"))
+			if(dropdownInputInvalid(pinInput))
+				valid=false;
 
 
 		if(valid)
@@ -105,11 +107,15 @@ $(document).ready(function(){
 	});
 
 	$(".multi-pin-selector").click(function(){
-		$(this).parents("pins-selector").removeClass("error");
+		$(this).parents(".pins-selector").removeClass("error");
 		$(".multi-pin-error").addClass("hidden");
 	});
 
 	$(".multi-pin-selector li a").click(function(){
+		var colorPin = $(this).parents(".dropdown.multi-pin-selector").attr('id');
+		var inputClass = "new-device-" + colorPin + '-input'; 
+		var inputElement = $("input." + inputClass);
+		inputElement.val($(this).attr('id'));
 		$(this).parents(".pins-selector").attr('data-' + $(this).parents(".dropdown.multi-pin-selector").attr('id'),$(this).attr('id'));
 	});
 });

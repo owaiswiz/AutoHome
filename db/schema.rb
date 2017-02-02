@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170201143734) do
+ActiveRecord::Schema.define(version: 20170202072337) do
 
   create_table "devices", force: :cascade do |t|
     t.string   "name"
@@ -25,6 +25,9 @@ ActiveRecord::Schema.define(version: 20170201143734) do
     t.integer  "room_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "red_pin"
+    t.integer  "green_pin"
+    t.integer  "blue_pin"
     t.index ["room_id"], name: "index_devices_on_room_id"
   end
 

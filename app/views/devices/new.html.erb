@@ -100,6 +100,9 @@
 		    	<% end %>
 	  		</ul>
 			</div>
+			<%= f.hidden_field :red_pin,value: 0, class:"new-device-red-pin-input" %>
+			<%= f.hidden_field :green_pin,value: 0, class:"new-device-green-pin-input" %>
+			<%= f.hidden_field :blue_pin,value: 0, class:"new-device-blue-pin-input" %>
 
 			<div class="multi-pin-error hidden">You Must Select Different Pins for Each Color</div>
 		</div>
@@ -116,7 +119,7 @@
   		</ul>
   		<%= f.hidden_field :room, value: 0, class:"new-device-room-input"%>
 		</div>
-
+		
 		<%= f.submit "Add Device", class: "btn btn-primary btn-custom-primary btn-black add-device-button" %>
 		</div>
 	<% end %>
