@@ -121,10 +121,11 @@ $(document).ready(function(){
 		scheduleModal.find(".schedule-error").addClass("hidden");
 		$.ajax({
 			method: "POST",
-			url: "/device/add",//"/device/" + deviceId + "/schedule/",
+			url: "/device/" + deviceId + "/schedule",
 			data: {scheduleType:scheduleTypeVal,scheduleDay:scheduleDayVal,scheduleHour:scheduleHourVal,scheduleMinute:scheduleMinuteVal,scheduleState:scheduleStateVal} 
 		});
 		$(this).parents(".schedule-modal").modal('hide');
+		$(".schedule-modal select").val("");
 		return true;
 
 	});

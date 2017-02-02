@@ -62,6 +62,27 @@ class DevicesController < ApplicationController
 		end
 	end
 
+	def change_state
+
+	end
+
+	def change_color
+
+	end
+
+	def change_brightness
+
+	end
+
+	def change_speed
+
+	end
+
+	def schedule_device
+
+	end
+	
+
 	def destroy
 
 	end
