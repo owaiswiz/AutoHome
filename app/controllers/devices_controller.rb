@@ -5,7 +5,7 @@ class DevicesController < ApplicationController
 
 		@devices = Device.all
 
-		@availablePins = [3,5,7,8,10,11,12,13,15,16,18,19,21,22,23,24,26,27,28,29,31,32,33,35,36,37,38,40]
+		@availablePins = [7,8,10,11,12,13,15,16,18,19,21,22,23,24,26,27,28,29,31,32,33,35,36,37,38,40]
 
 		@devices.each do |device|
 			@availablePins -= [device.pin]
@@ -63,23 +63,40 @@ class DevicesController < ApplicationController
 	end
 
 	def change_state
+		device_id = params[:device_id]
+		change = params[:change]
 
 	end
 
 	def change_color
-
+		device_id = params[:device_id]
+		color = params[:color]
 	end
 
 	def change_brightness
-
+		device_id = params[:device_id]
+		brightness = params[:brightness]
 	end
 
 	def change_speed
+		device_id = params[:device_id]
+		speed = params[:speed]
 
+		render plain: "OK",status: 200
 	end
 
 	def schedule_device
+		device_id = params[:device_id]
+		schedule_type = params[:schedule_type]
+		schedule_day = params[:schedule_day]
+		schedule_hour = params[:schedule_hour]
+		schedule_minute = params[:schedule_minute]
+		schedule_state = params[:schedule_state]
+	
+		schedule_day = "*" if schedule_type == "everyday"
 
+		cron_command = "#{schedule_minute} #{schedule_hour} #{schedule_day} * * pathtocommand"
+		puts cron_time
 	end
 	
 

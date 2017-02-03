@@ -13,7 +13,10 @@ $(document).ready(function(){
 			change="enable"
 		else
 			change="disable"
-  	$.ajax("/device/" + deviceId + "/state/" + change);
+  	$.ajax({
+  		method: "POST",
+  		url: "/device/" + deviceId + "/state/" + change
+  	});
 
 	}
 
@@ -26,7 +29,10 @@ $(document).ready(function(){
   $('.brightnessInput').on('change',function(){
   	var deviceId = $(this).parents(".device").attr('id');
   	var brightness = $(this).val();
-  	$.ajax("/device/" + deviceId + "/brightness/" + brightness).done();
+  	$.ajax({
+  		method: "POST",
+  		url: "/device/" + deviceId + "/brightness/" + brightness
+  	});
   });
 
   //FanSpeedHandler
@@ -39,7 +45,10 @@ $(document).ready(function(){
   $(".speedInput").on('change',function(){
   	var deviceId = $(this).parents(".device").attr('id');
   	var speed = $(this).val();
-  	$.ajax("/device/" + deviceId + "/speed/" + speed).done();
+  	$.ajax({
+  		method: "POST",
+  		url: "/device/" + deviceId + "/speed/" + speed
+  	});
   });
 	$(".device i.light").click(function(){
 		changeOpacity(this);
@@ -51,7 +60,10 @@ $(document).ready(function(){
 	$(".device .color-label").click(function(){
 		var color = $(this).siblings('input').val();
 		var deviceId = $(this).parents(".device").attr('id');
-		$.ajax("/device/" + deviceId + "/color/" + color)
+		$.ajax({
+  		method: "POST",
+  		url: "/device/" + deviceId + "/color/" + color
+  	});
 		$(this).parents(".device-controls").find("i.fa.fa-lightbulb-o").removeClass("red-light green-light yellow-light blue-light magenta-light cyan-light").addClass(color + "-light");
 		$(this).parents(".color-selector").find(".color-label").removeClass("active-color");
 		$(this).addClass("active-color")
@@ -70,7 +82,7 @@ $(document).ready(function(){
 
 
 	$(".schedule-type-select").on('change',function(){
-		if($(".schedule-type-select").find(":selected").val() == "day")
+		if($(this).find(":selected").val() == "day")
 		{
 			$(this).parents(".schedule-type").find(".schedule-day-select").removeClass("hidden");
 		}
@@ -122,7 +134,7 @@ $(document).ready(function(){
 		$.ajax({
 			method: "POST",
 			url: "/device/" + deviceId + "/schedule",
-			data: {scheduleType:scheduleTypeVal,scheduleDay:scheduleDayVal,scheduleHour:scheduleHourVal,scheduleMinute:scheduleMinuteVal,scheduleState:scheduleStateVal} 
+			data: {schedule_type:scheduleTypeVal,schedule_day:scheduleDayVal,schedule_hour:scheduleHourVal,schedule_minute:scheduleMinuteVal,schedule_state:scheduleStateVal} 
 		});
 		$(this).parents(".schedule-modal").modal('hide');
 		$(".schedule-modal select").val("");
