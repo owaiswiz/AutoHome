@@ -53,6 +53,7 @@ $(document).ready(function(){
 	$(".device i.light").click(function(){
 		changeOpacity(this);
 		$(this).toggleClass("light-enabled light-disabled");
+		$(this).parents(".device-controls").find(".color-selector").toggleClass("multicolor-enabled multicolor-disabled")
 		$(this).siblings(".brightnessInput").prop('disabled', function(i, v) { return !v; });
 		changeState(this,"light-enabled")
 	});
