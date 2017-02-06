@@ -8,15 +8,7 @@
 			spin=""
 		end
 	%>
-  <div class="panel-heading">
-    <h3 class="panel-title device-name">
-	    <%= device.name %>
-	    <a href="#" class="remove-device">
-	    	<i class="fa fa-times"></i>
-	  	</a>
-  	</h3>
-  </div>
-
+  <%= render partial: "shared/devices/device_header",locals:{device: device} %>
   <div class="panel-body device-controls">
 
   	<div class="left-side col-xs-6 col-sm-6 col-md-6">

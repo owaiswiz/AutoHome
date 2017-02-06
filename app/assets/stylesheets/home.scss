@@ -68,7 +68,7 @@
 	{
 		padding: 25px !important;
 		margin:25px !important;
-		
+		min-height: 450px;
 		.panel-heading
 		{
 			padding: 15px 0;
@@ -223,7 +223,7 @@
 }
 
 
-.btn-schedule-device
+.btn-schedule-device,.btn-remove-device
 {
 	background-color: white;
 	border-color: #29B6F6;
@@ -234,6 +234,15 @@
 		border-color: white;
 		background-color: #29B6F6;
 		color:white;
+	}
+}
+.btn-remove-device
+{
+	border-color: #f44336;
+	color: #f44336;
+	&:hover,&:active,&:focus
+	{
+		background-color: #f44336;
 	}
 }
 
@@ -326,6 +335,23 @@ i.fan
 		letter-spacing: 2px;
 		display:inline-block;
 		margin-right: 50px;
+	}
+}
+
+.remove-device
+{
+	cursor: pointer;
+}
+.remove-device-modal
+{
+	text-align: center;
+
+	.modal-body p
+	{
+		text-align: center;
+		font-size: 1.4rem;
+		font-weight: normal;
+		line-height: 5em;
 	}
 }
 

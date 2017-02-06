@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
 	
-	before_filter :authenticate_user, :only => [:main]
+	before_action :authenticate_user, :only => [:main]
   
   def home
 

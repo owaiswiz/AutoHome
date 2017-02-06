@@ -1,5 +1,6 @@
 class DevicesController < ApplicationController
-
+	skip_before_action :verify_authenticity_token, :only => [:change_state]
+	before_action :authenticate_user, :except => [:change_state]
 	def new
 		@device = Device.new
 
@@ -63,6 +64,11 @@ class DevicesController < ApplicationController
 	end
 
 	def change_state
+		if !session[:user_id]
+			if !(params[:username] == User.first.username && params[:password] == User.first.password)
+				return false
+			end
+		end
 		device_id = params[:device_id]
 		change = params[:change]
 		device = Device.find(device_id)	
@@ -76,11 +82,7 @@ class DevicesController < ApplicationController
 			end
 		else
 			device = Device.find(device_id)	
-			if device.multicolor == "1"
-				clean_multicolor_pins(device)
-			else
-				@@gpio.clean_up device.pin
-			end
+			clean_pins(device)
 			device.update(state: "disabled")
 		end
 	end
@@ -110,16 +112,20 @@ class DevicesController < ApplicationController
 		schedule_hour = params[:schedule_hour]
 		schedule_minute = params[:schedule_minute]
 		schedule_state = params[:schedule_state]
-	
 		schedule_day = "*" if schedule_type == "everyday"
+		username = User.first.username
+		password = User.first.password
+		cron_command = "#{schedule_minute} #{schedule_hour} #{schedule_day} * * /root/scheduletask.sh #{device_id} #{schedule_state} #{username} #{password}"
 
-		cron_command = "#{schedule_minute} #{schedule_hour} #{schedule_day} * * pathtocommand"
-		puts cron_command
+		`(crontab -l;echo "#{cron_command}") | crontab`
+		
 	end
 	
 
 	def destroy
-
+		device = Device.find(params[:device_id])
+		clean_pins(device)
+		device.destroy
 	end
 
 	protected
@@ -162,7 +168,7 @@ class DevicesController < ApplicationController
 
 
 	def set_multicolor(device,duty_cycle)
-		clean_multicolor_pins(device)
+		clean_pins(device)
 		duty_cycle = 100 - duty_cycle
 		if device.color == "red"
 			start_pwm(device.red_pin,duty_cycle)
@@ -182,10 +188,14 @@ class DevicesController < ApplicationController
 		end
 	end
 
-	def clean_multicolor_pins(device)
-		@@gpio.clean_up device.red_pin
-		@@gpio.clean_up	device.green_pin
-		@@gpio.clean_up device.blue_pin	
+	def clean_pins(device)
+		if device.multicolor == "1"
+			@@gpio.clean_up device.red_pin
+			@@gpio.clean_up	device.green_pin
+			@@gpio.clean_up device.blue_pin	
+		else
+			@@gpio.clean_up device.pin
+		end
 	end
 
 	private

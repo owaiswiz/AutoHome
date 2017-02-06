@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  before_filter :save_login_state, :only => [:login, :login_attempt]
+  before_action :save_login_state, :only => [:login, :login_attempt]
 
   def login 
 

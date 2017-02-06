@@ -15,9 +15,9 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <% if session[:user_id] %>
       <ul class="nav navbar-nav">
-        <li class="active"><a href="/main">View Devices</a></li>
-        <li><a href="/room/add">Add a Room</a></li>
-        <li><a href="/device/add">Add a Device</a></li>
+        <li class="<%= 'active' if controller_name == 'home' && action_name != 'home' %>"><a href="/main">View Devices</a></li>
+        <li class="<%= 'active' if controller_name == 'rooms' %>"><a href="/room/add">Add a Room</a></li>
+        <li class="<%= 'active' if controller_name == 'devices' %>"><a href="/device/add">Add a Device</a></li>
       </ul>
       <% end %>
       <ul class="nav navbar-nav navbar-right">

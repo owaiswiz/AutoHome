@@ -20,9 +20,11 @@ Rails.application.routes.draw do
 	post '/device/add' => "devices#create"
 
 	post '/device/:device_id/state/:change' => "devices#change_state"
+	post '/device/:device_id/state/:change/:username/:password' => "devices#change_state"
 	post '/device/:device_id/color/:color' => "devices#change_color"
 	post '/device/:device_id/brightness/:brightness' => "devices#change_brightness"
 	post '/device/:device_id/speed/:speed' => "devices#change_speed"
 	post '/device/:device_id/schedule' => "devices#schedule_device"
+	post '/device/:device_id/destroy' => "devices#destroy"
   	# For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

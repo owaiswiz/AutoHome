@@ -1,6 +1,7 @@
+//ISOTOPE LIBRARY FOR RELAYOUT
+
 $(document).ready(function(){
   
-
 	function changeOpacity(ele){
 		$(ele).css("opacity",$(ele).siblings(".brightnessInput").val()/100.0 + 0.3)
 	}
@@ -20,6 +21,16 @@ $(document).ready(function(){
 
 	}
 
+	$(".delete-device").click(function(){
+		var deviceId = $(this).parents(".device").attr('id');
+		$.ajax({
+			method: "POST",
+			url: "/device/" + deviceId + "/destroy"
+		});
+		$(this).parents(".device").detach();
+		var data = $(this).parents(".devices").html()
+		$(".devices").hide().html(data).fadeIn('fast');
+	})
 	//BrightnessHandler
   $('.brightnessInput').on('input change', function () {
   	changeOpacity($(this).siblings("i.light"));
