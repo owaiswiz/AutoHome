@@ -1,16 +1,14 @@
 <!-- Generic TEMPLATE -->
-<div class="panel panel-default device col-xs-5 col-sm-5 col-md-5" id="<%= device.id %>">
-  <%= render partial: "shared/devices/device_header",locals:{device: device} %>
-  <div class="panel-body device-controls">
+<%= render partial: "shared/devices/device_header",locals:{device: device} %>
+<div class="panel-body device-controls">
 
-  	<div class="left-side col-xs-6 col-sm-6 col-md-6">
-  		<div>
-			  <i class="fa <%= device.icon %> fa-10 <%= device.device_type %> <%= device.device_type %>-<%= device.state %> " aria-hidden="true" ></i>
-			</div>
-	  </div>
+	<div class="left-side col-xs-6 col-sm-6 col-md-6">
+		<div>
+		  <i class="fa <%= device.icon %> fa-10 <%= device.device_type %> <%= device.device_type %>-<%= device.state %> " aria-hidden="true" ></i>
+		</div>
+  </div>
 
-	  <div class="right-side col-xs-6 col-sm-6 col-md-6">
-			<%= render partial:"shared/devices/schedule",locals:{device:device} %>
-	  </div>
+  <div class="right-side col-xs-6 col-sm-6 col-md-6">
+		<%= render partial:"shared/devices/schedule",locals:{device:device} %>
   </div>
 </div>

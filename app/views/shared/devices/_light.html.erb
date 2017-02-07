@@ -1,54 +1,52 @@
 <!-- Light TEMPLATE -->
-<div class="panel panel-default device col-xs-5 col-sm-5 col-md-5" id="<%= device.id %>">
-  <%= render partial: "shared/devices/device_header",locals:{device: device} %>
-  <div class="panel-body device-controls">
+<%= render partial: "shared/devices/device_header",locals:{device: device} %>
+<div class="panel-body device-controls">
 
-  	<div class="left-side col-xs-6 col-sm-6 col-md-6">
-	  	<div>
-			  <i class="fa <%= device.icon %> fa-10 <%=device.device_type%> <%=device.device_type%>-<%= device.state %> <%= device.color%>-<%= device.device_type %>" aria-hidden="true" style="opacity: <%=device.brightness/100.0 + 0.3%>"></i>
-			  <input class="brightnessInput" type="range" value="<%= device.brightness %>" <%= device.state %>/>
-			  <label class="brightnessText brightnessText">Brightness: <%= device.brightness %>%</label>
-		  </div>
+	<div class="left-side col-xs-6 col-sm-6 col-md-6">
+  	<div>
+		  <i class="fa <%= device.icon %> fa-10 <%=device.device_type%> <%=device.device_type%>-<%= device.state %> <%= device.color%>-<%= device.device_type %>" aria-hidden="true" style="opacity: <%=device.brightness/100.0 + 0.3%>"></i>
+		  <input class="brightnessInput" type="range" value="<%= device.brightness %>" <%= device.state %>/>
+		  <label class="brightnessText brightnessText">Brightness: <%= device.brightness %>%</label>
 	  </div>
+  </div>
 
-	  <div class="right-side col-xs-6 col-sm-6 col-md-6">
-	  	<div>
-		  	<div class="color-selector multicolor-<%= device.multicolor %> multicolor-<%= device.state %>">
-					<div class="choose-color-label">Choose Your Color</div>
+  <div class="right-side col-xs-6 col-sm-6 col-md-6">
+  	<div>
+	  	<div class="color-selector multicolor-<%= device.multicolor %> multicolor-<%= device.state %>">
+				<div class="choose-color-label">Choose Your Color</div>
 
-			  	<div class="radiowrapper" id="wrap1">
-					  <input type="radio" name="color" value="red" id="red">
-					  <label for="red" class="color-label red-label"></label>
-					</div>
-
-					<div class="radiowrapper" id="wrap12">
-					  <input type="radio" name="color" value="yellow" id="yellow">
-					  <label for="blue" class="color-label yellow-label"></label>
-					</div>
-
-					<div class="radiowrapper" id="wrap2">
-					  <input type="radio" name="color" value="green" id="green">
-					  <label for="green" class="color-label green-label"></label>
-					</div>
-
-					<div class="radiowrapper" id="wrap23">
-					  <input type="radio" name="color" value="cyan" id="cyan">
-					  <label for="blue" class="color-label cyan-label"></label>
-					</div>
-
-					<div class="radiowrapper" id="wrap3">
-					  <input type="radio" name="color" value="blue" id="blue">
-					  <label for="blue" class="color-label blue-label"></label>
-					</div>
-
-					<div class="radiowrapper" id="wrap13">
-					  <input type="radio" name="color" value="magenta" id="magenta">
-					  <label for="blue" class="color-label magenta-label"></label>
-					</div>
-
+		  	<div class="radiowrapper" id="wrap1">
+				  <input type="radio" name="color" value="red" id="red">
+				  <label for="red" class="color-label red-label"></label>
 				</div>
-				<%= render partial: "shared/devices/schedule",locals:{device: device} %>
+
+				<div class="radiowrapper" id="wrap12">
+				  <input type="radio" name="color" value="yellow" id="yellow">
+				  <label for="blue" class="color-label yellow-label"></label>
+				</div>
+
+				<div class="radiowrapper" id="wrap2">
+				  <input type="radio" name="color" value="green" id="green">
+				  <label for="green" class="color-label green-label"></label>
+				</div>
+
+				<div class="radiowrapper" id="wrap23">
+				  <input type="radio" name="color" value="cyan" id="cyan">
+				  <label for="blue" class="color-label cyan-label"></label>
+				</div>
+
+				<div class="radiowrapper" id="wrap3">
+				  <input type="radio" name="color" value="blue" id="blue">
+				  <label for="blue" class="color-label blue-label"></label>
+				</div>
+
+				<div class="radiowrapper" id="wrap13">
+				  <input type="radio" name="color" value="magenta" id="magenta">
+				  <label for="blue" class="color-label magenta-label"></label>
+				</div>
+
 			</div>
-	  </div>
+			<%= render partial: "shared/devices/schedule",locals:{device: device} %>
+		</div>
   </div>
 </div>
