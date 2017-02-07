@@ -32,35 +32,35 @@ $(document).ready(function(){
 		$(".devices").hide().html(data).fadeIn('fast');
 	})
 	//BrightnessHandler
-  $('.brightnessInput').on('input change', function () {
-  	changeOpacity($(this).siblings("i.light"));
-  	$(this).siblings('.brightnessText').text("Brightness: " + $(this).val() + "%");
+	$('.brightnessInput').on('input change', function () {
+		changeOpacity($(this).siblings("i.light"));
+		$(this).siblings('.brightnessText').text("Brightness: " + $(this).val() + "%");
 	});
 
-  $('.brightnessInput').on('change',function(){
-  	var deviceId = $(this).parents(".device").attr('id');
-  	var brightness = $(this).val();
-  	$.ajax({
-  		method: "POST",
-  		url: "/device/" + deviceId + "/brightness/" + brightness
-  	});
-  });
+	$('.brightnessInput').on('change',function(){
+		var deviceId = $(this).parents(".device").attr('id');
+		var brightness = $(this).val();
+		$.ajax({
+			method: "POST",
+			url: "/device/" + deviceId + "/brightness/" + brightness
+		});
+	});
 
-  //FanSpeedHandler
-  $(".speedInput").on('input change',function(){
-  	var duration = 4.0*0.5**($(this).val()-1) + 's';
-  	$(this).siblings("i.fan").css("animation-duration",duration);
-  	$(this).siblings(".speedText").text("Speed: " + $(this).val());
-  });
+	//FanSpeedHandler
+	$(".speedInput").on('input change',function(){
+		var duration = 4.0*Math.pow(0.5,$(this).val()-1) + 's';
+		$(this).siblings("i.fan").css("animation-duration",duration);
+		$(this).siblings(".speedText").text("Speed: " + $(this).val());
+	});
 
-  $(".speedInput").on('change',function(){
-  	var deviceId = $(this).parents(".device").attr('id');
-  	var speed = $(this).val();
-  	$.ajax({
-  		method: "POST",
-  		url: "/device/" + deviceId + "/speed/" + speed
-  	});
-  });
+	$(".speedInput").on('change',function(){
+		var deviceId = $(this).parents(".device").attr('id');
+		var speed = $(this).val();
+		$.ajax({
+			method: "POST",
+			url: "/device/" + deviceId + "/speed/" + speed
+		});
+	});
 	$(".device i.light").click(function(){
 		changeOpacity(this);
 		$(this).toggleClass("light-enabled light-disabled");
