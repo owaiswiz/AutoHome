@@ -190,10 +190,14 @@ class DevicesController < ApplicationController
 
 	def clean_pins(device)
 		if device.multicolor == "1"
+			@@gpio.setup device.red_pin,as: :output
+			@@gpio.setup device.blue_pin,as: :output
+			@@gpio.setup device.green_pin,as: :output
 			@@gpio.clean_up device.red_pin
 			@@gpio.clean_up	device.green_pin
 			@@gpio.clean_up device.blue_pin	
 		else
+			@@gpio.setup device.pin,as: :output
 			@@gpio.clean_up device.pin
 		end
 	end
