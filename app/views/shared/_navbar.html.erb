@@ -18,6 +18,25 @@
         <li class="<%= 'active' if controller_name == 'home' && action_name != 'home' %>"><a href="/main">View Devices</a></li>
         <li class="<%= 'active' if controller_name == 'rooms' %>"><a href="/room/add">Add a Room</a></li>
         <li class="<%= 'active' if controller_name == 'devices' %>"><a href="/device/add">Add a Device</a></li>
+        <% if @currentRoom %>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Apply A Scene <span class="caret"></span></a>
+            <ul class="dropdown-menu room-controls">
+              <li><a href="/room/<%=@currentRoom.id%>/dim_scene"><i class="fa fa-adjust"></i>Dim</a></li>
+              <li><a href="/room/<%=@currentRoom.id%>/bright_scene"><i class="fa fa-sun-o"></i>Bright</a></li>
+              <li><a href="/room/<%=@currentRoom.id%>/reading_scene"><i class="fa fa-book"></i>Read</a></li>
+            </ul>
+          </li>
+        
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-power-off" style="padding-right: 10px;"></i>Turn Off All Devices <span class="caret"></span></a>
+            <ul class="dropdown-menu room-controls">
+              <li><a href="/room/<%=@currentRoom.id%>/turnoff">Current Room</a></li>
+              <li><a href="/house/turnoff">House</a></li>
+              
+            </ul>
+          </li>
+        <% end %>
       </ul>
       <% end %>
       <ul class="nav navbar-nav navbar-right">

@@ -34,7 +34,9 @@
 		</div>
 		<div class="col-xs-9 col-sm-9 col-md-9 devices">
 			<% if !@currentRoom.devices.empty? %>
-				<h1 class="devices-label">Connected Devices</h1>
+				<div class="room-header">
+					<h1 class="devices-label">Connected Devices</h1>
+			  	</div>
 				<% @currentRoom.devices.each do |device|%> 
 					<div class="panel panel-default device col-xs-12 col-sm-12 col-md-12 col-lg-5" id="<%= device.id %>">
 						<%= render partial: "shared/devices/#{device.device_type}",locals: {device: device} %>

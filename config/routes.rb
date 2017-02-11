@@ -26,5 +26,11 @@ Rails.application.routes.draw do
 	post '/device/:device_id/speed/:speed' => "devices#change_speed"
 	post '/device/:device_id/schedule' => "devices#schedule_device"
 	post '/device/:device_id/destroy' => "devices#destroy"
+
+	get '/room/:room_id/dim_scene' => "rooms#dim_scene"
+	get '/room/:room_id/bright_scene' => "rooms#bright_scene"
+	get '/room/:room_id/reading_scene' => "rooms#reading_scene"
+	get '/room/:room_id/turnoff' => "rooms#room_off"
+	get '/house/turnoff' => "rooms#house_off"
   	# For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
