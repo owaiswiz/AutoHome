@@ -228,7 +228,7 @@
 }
 
 
-.btn-schedule-device,.btn-remove-device
+.btn-schedule-device,.btn-remove-device,.btn-set-limit-device
 {
 	background-color: white;
 	border-color: #29B6F6;
@@ -381,7 +381,15 @@ i.fan
 	}
 }
 
-
+.temperature-value
+{
+	padding-top: 35px;
+	font-size: 1.3em;
+}
+.temperature-enabled
+{
+	color: #f44336;
+}
 
 
 

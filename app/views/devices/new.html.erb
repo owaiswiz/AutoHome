@@ -13,11 +13,13 @@
   		<ul class="dropdown-menu" aria-labelledby="type-selector-dropdown">
 	    	<li><a class="new-device-type" id="light">Light Bulb / LED Light</a></li>
 	    	<li><a class="new-device-type" id="fan">FAN</a></li>
+	    	<li><a class="new-device-type" id="temperature">Temperature Monitor/Alert</a></li>
 	    	<li><a class="new-device-type" id="generic">Others</a></li>
   		</ul>
   		<%= f.hidden_field :device_type, value: 0, class:"new-device-type-input"%>
 		</div>
-
+		<%= f.text_field :extra, placeholder: "Enter Sensor Serial Number", class:"extra-add-device hidden" %>
+		<input placeholder="Enter Limit in °C" class="limit-add-device hidden" type="text" name="limit" id="limit">
 		<div class="dropdown icon-selector hidden">
   		<button class="btn btn-default dropdown-toggle" type="button" id="icon-selector-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" data-label="Icon of Device - ">
     	Choose the Icon of Device

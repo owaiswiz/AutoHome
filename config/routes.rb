@@ -32,5 +32,9 @@ Rails.application.routes.draw do
 	get '/room/:room_id/reading_scene' => "rooms#reading_scene"
 	get '/room/:room_id/turnoff' => "rooms#room_off"
 	get '/house/turnoff' => "rooms#house_off"
+
+	get '/device/:device_id/get_temperature' => "devices#get_temperature"
+	post '/device/:device_id/update_limit/:limit' => "devices#update_limit"
+
   	# For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

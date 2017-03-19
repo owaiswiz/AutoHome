@@ -21,6 +21,39 @@ $(document).ready(function(){
 
 	}
 
+	function getTemperature($currentDevice)
+	{
+		var deviceId = $currentDevice.parents(".device").attr('id')
+		$.ajax({
+				method: "GET",
+				url: "/device/" + deviceId + "/get_temperature",
+				dataType: "json",
+    				success: function(data){
+        			$currentDevice.parents(".device").find(".temperature-value").text(data.temperature + " °C")
+        			if(data.state == "enabled")
+        				$currentDevice.removeClass('temperature-disabled').addClass("temperature-enabled")
+        			else
+        				$currentDevice.addClass('temperature-disabled').removeClass("temperature-enabled")
+    			}        
+			});
+	}
+
+	$(".device .temperature").each(function(){
+		var $currentDevice=$(this)
+		getTemperature($currentDevice)
+		setInterval(function(){
+			getTemperature($currentDevice)
+		}, 10000);
+	});
+
+	$(".btn-set-limit-device").click(function(){
+		var deviceId = $(this).parents(".device").attr('id')
+		var limit = prompt("Please Enter the new Limit")
+		$.ajax({
+			method: "POST",
+			url: "/device/" + deviceId + "/update_limit/" + limit
+		});
+	});
 	$(".delete-device").click(function(){
 		var deviceId = $(this).parents(".device").attr('id');
 		$.ajax({

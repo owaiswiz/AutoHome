@@ -8,7 +8,8 @@ $(document).ready(function(){
 	var redInput = $(".add-device input#device_red_pin");
 	var greenInput = $(".add-device input#device_green_pin");
 	var blueInput = $(".add-device input#device_blue_pin");
-
+	var extraInput = $(".add-device input#device_extra");
+	var limitInput = $(".add-device input#limit")
 	function addErrorToDropdown(element){
 		element.siblings("button.dropdown-toggle").addClass("error");
 	}
@@ -65,6 +66,15 @@ $(document).ready(function(){
 			if(dropdownInputInvalid(iconInput))
 				valid=false
 
+		if(typeInput.val() == "temperature")
+			if(!extraInput.val().replace(/ /g,'').length > 0)
+			{
+				extraInput.addClass("error");
+				valid=false;
+			}
+			else
+				extraInput.val(extraInput.val()+"andthelimit="+limitInput.val())
+					
 		if(!$("input#device_multicolor").is(":checked"))
 			if(dropdownInputInvalid(pinInput))
 				valid=false;
@@ -84,20 +94,22 @@ $(document).ready(function(){
 	})
 
 	$(".add-device .dropdown.type-selector .dropdown-menu li a").click(function(){
+		$(".extra-add-device").addClass("hidden");
+		$(".icon-selector").addClass("hidden");
+		$(".light-only").addClass("hidden");
+		$(".limit-add-device").addClass("hidden")
 		if($(this).attr('id') == 'light')
 		{
 			$(".light-only").removeClass("hidden");
-			$(".icon-selector").addClass("hidden");
 		}
 		else if($(this).attr('id') == 'generic')
 		{
-			$(".light-only").addClass("hidden");
 			$(".icon-selector").removeClass("hidden");
 		}
-		else
+		else if($(this).attr('id') == 'temperature')
 		{
-			$(".icon-selector").addClass("hidden");
-			$(".light-only").addClass("hidden");
+			$(".extra-add-device").removeClass("hidden");
+			$(".limit-add-device").removeClass("hidden")
 		}
 	});
 

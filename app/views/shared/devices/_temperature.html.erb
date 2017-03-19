@@ -1,0 +1,19 @@
+<!-- Generic TEMPLATE -->
+<%= render partial: "shared/devices/device_header",locals:{device: device} %>
+<div class="panel-body device-controls">
+
+	<div class="left-side col-xs-6 col-sm-6 col-md-6" style="flex-direction: column;">
+		<div>
+		  <i class="fa fa-thermometer-half fa-10 <%= device.device_type %> <%= device.device_type %>-<%= device.state %> " aria-hidden="true" ></i>
+		</div>
+		<div class="temperature-value">
+		</div>
+  </div>
+
+  <div class="right-side col-xs-6 col-sm-6 col-md-6">
+		<button class="btn btn-primary btn-set-limit-device" data-toggle="modal" data-target="#set-limit-<%=device.id%>-Modal">
+		<i class="fa fa-sliders fa-1" aria-hidden="true"></i>
+		Set Limit
+		</button>
+  </div>
+</div>

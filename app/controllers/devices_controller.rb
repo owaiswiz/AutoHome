@@ -7,7 +7,7 @@ class DevicesController < ApplicationController
 
 		@devices = Device.all
 
-		@availablePins = [7,8,10,11,12,13,15,16,18,19,21,22,23,24,26,27,28,29,31,32,33,35,36,37,38,40]
+		@availablePins = [8,10,11,12,13,15,16,18,19,21,22,23,24,26,27,28,29,31,32,33,35,36,37,38,40]
 
 		@devices.each do |device|
 			@availablePins -= [device.pin]
@@ -122,6 +122,22 @@ class DevicesController < ApplicationController
 		
 	end
 	
+	def get_temperature
+		device = Device.find(params[:device_id])
+		sensor_serial = device.extra.split("andthelimit=")[0]
+		temperature_reading=`cat /sys/bus/w1/devices/#{sensor_serial}/w1_slave`
+		@temperature=temperature_reading.split("t=")[1].to_f/1000
+		render json: {temperature: "#{'%.2f' % @temperature}",state: "#{device.state}"}
+	end
+
+	def update_limit
+		device = Device.find(params[:device_id])
+		limit = params[:limit].to_i
+		extra = device.extra
+		extra = extra.split("andthelimit=")
+		updatedextra = "#{extra[0]}andthelimit=#{limit}"
+		device.update(extra:updatedextra)
+	end
 
 	def destroy
 		device = Device.find(params[:device_id])
@@ -133,6 +149,6 @@ class DevicesController < ApplicationController
 
 	private
 	def devices_params
-		params.require(:device).permit(:name,:pin,:device_type,:color,:icon,:multicolor,:red_pin,:green_pin,:blue_pin)
+		params.require(:device).permit(:name,:pin,:device_type,:color,:icon,:multicolor,:red_pin,:green_pin,:blue_pin,:extra)
 	end
 end
